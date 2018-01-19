@@ -1,0 +1,67 @@
+//
+//  MVCCoordinator.swift
+//  ArchitecturesPractice
+//
+//  Created by Volodymyr Shlikhta on 1/19/18.
+//  Copyright © 2018 Volodymyr Shlikhta. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class MVCRecipesCoordiantor: RootViewCoordinator {
+    
+    // MARK: Vars
+    
+   private lazy var navigationController: UINavigationController = {
+        let navVC = UINavigationController()
+        navVC.isNavigationBarHidden = true
+        return navVC
+    }()
+    var rootViewController: UIViewController {
+        return self.navigationController
+    }
+    var childCoordinators: [Coordinator] = []
+    
+    // MARK: Methods
+    
+    func start() {
+        startRecipesController()
+    }
+    
+    private func startRecipesController() {
+        let recipesVC = RecipesViewController()
+        recipesVC.delegate = self
+        self.navigationController.pushViewController(recipesVC, animated: false)
+    }
+    
+    func startRecipeDetailsCoordinator(_ recipePayload: RecipeDetailsPayload) {
+        let detailsCoordinator = MVCRecipeDetailsCoordinator(withRecipe: recipePayload)
+        detailsCoordinator.start()
+        detailsCoordinator.delegate = self
+        self.rootViewController.present(detailsCoordinator.rootViewController, animated: true, completion: nil)
+        self.addChildCoordinator(childCoordinator: detailsCoordinator)
+    }
+    
+}
+
+extension MVCRecipesCoordiantor: MVCRecipesCoordiantorDelegate {
+    func didTapTopRecipe() {
+        let recipePayload = RecipeList.shared.item(at: 0)
+        startRecipeDetailsCoordinator(recipePayload)
+    }
+    
+    func didTapBotRecipe() {
+        let recipePayload = RecipeList.shared.item(at: 1)
+        startRecipeDetailsCoordinator(recipePayload)
+    }
+    
+}
+
+extension MVCRecipesCoordiantor: MVCRecipeDetailsCoordinatorDelegate {
+    func recipeDetailsCoordinatorDidRequestDismiss(detailsCoordinator: MVCRecipeDetailsCoordinator) {
+        detailsCoordinator.rootViewController.dismiss(animated: true, completion: nil)
+        self.removeChildCoordinator(childCoordinator: detailsCoordinator)
+    }
+}
+

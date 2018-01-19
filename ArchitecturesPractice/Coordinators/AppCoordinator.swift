@@ -39,7 +39,7 @@ class AppCoordinator: RootViewCoordinator {
     private func showMainController() {
         let mainViewController = TableViewController(TableViewDelegate(tapDelegate: self), TableViewDataSource())
         
-        self.navigationController.setViewControllers([mainViewController], animated: true)
+        self.navigationController.pushViewController(mainViewController, animated: false)
     }
     
 }
@@ -49,24 +49,18 @@ extension AppCoordinator: SelectedRowDelegate {
         var coordinator: RootViewCoordinator
         switch architecture {
         case .MVC:
-            coordinator = MVCCoordinator()
+            coordinator = MVCRecipesCoordiantor()
         case .MVP:
-            coordinator = MVCCoordinator()
+            coordinator = MVCRecipesCoordiantor()
         case .MVVM:
-            coordinator = MVCCoordinator()
+            coordinator = MVCRecipesCoordiantor()
         case .VIPER:
-            coordinator = MVCCoordinator()
+            coordinator = MVCRecipesCoordiantor()
         }
         
         coordinator.start()
         self.addChildCoordinator(childCoordinator: coordinator)
         self.rootViewController.present(coordinator.rootViewController, animated: true, completion: nil)
-    }
-}
-
-extension AppCoordinator: MVCCoordinatorOutput {
-    func didTapBack() {
-        print("tapped back")
     }
 }
 
