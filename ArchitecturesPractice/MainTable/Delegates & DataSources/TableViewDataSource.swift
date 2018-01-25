@@ -11,7 +11,11 @@ import UIKit
 
 class TableViewDataSource: NSObject, UITableViewDataSource {
     
+    // MARK: Vars
+    
     fileprivate let architectures = Architecture.allArchitectures
+    
+    // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return architectures.count
