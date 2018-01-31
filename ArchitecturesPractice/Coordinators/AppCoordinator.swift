@@ -33,41 +33,67 @@ class AppCoordinator: RootViewCoordinator {
     // MARK: Methods
     
     func start() {
-        showMainController()
-    }
-    
-    private func showMainController() {
         let mainViewController = TableViewController(TableViewDelegate(tapDelegate: self), TableViewDataSource())
         
-        self.navigationController.setViewControllers([mainViewController], animated: true)
+        self.navigationController.pushViewController(mainViewController, animated: false)
+    }
+    
+    fileprivate func present(_ coordinator: RootViewCoordinator) {
+        coordinator.start()
+        
+        self.addChildCoordinator(childCoordinator: coordinator)
+        self.rootViewController.present(coordinator.rootViewController, animated: true, completion: nil)
+    }
+    
+    fileprivate func dismiss(coordinator: RootViewCoordinator) {
+        coordinator.rootViewController.dismiss(animated: true, completion: nil)
+        self.removeChildCoordinator(childCoordinator: coordinator)
     }
     
 }
 
 extension AppCoordinator: SelectedRowDelegate {
     func didTapRow(withArchitecture architecture: Architecture) {
-        var coordinator: RootViewCoordinator
         switch architecture {
         case .MVC:
-            coordinator = MVCCoordinator()
+            let coordinator = MVCRecipesCoordiantor()
+            coordinator.delegate = self
+            present(coordinator)
         case .MVP:
-            coordinator = MVCCoordinator()
+            let coordinator = MVPRecipesCoordinator()
+            coordinator.delegate = self
+            present(coordinator)
         case .MVVM:
-            coordinator = MVCCoordinator()
+            let coordinator = MVMRecipesCoordinator()
+            coordinator.delegate = self
+            present(coordinator)
         case .VIPER:
-            coordinator = MVCCoordinator()
+            let coordinator = MVCRecipesCoordiantor()
+            present(coordinator)
         }
         
-        coordinator.start()
-        self.addChildCoordinator(childCoordinator: coordinator)
-        self.rootViewController.present(coordinator.rootViewController, animated: true, completion: nil)
+        
     }
 }
 
-extension AppCoordinator: MVCCoordinatorOutput {
-    func didTapBack() {
-        print("tapped back")
+extension AppCoordinator: MVCRecipesCoordinatorDelegate {
+    func didRequestDismiss(forRecipesCoordinator coordinator: MVCRecipesCoordiantor) {
+        dismiss(coordinator: coordinator)
+    }
+    
+}
+
+extension AppCoordinator: MVPRecipesCoordinatorDelegate {
+    func didRequestRecipesDismiss(forRecipesCoordinator coordinator: MVPRecipesCoordinator) {
+        dismiss(coordinator: coordinator)
     }
 }
 
+extension AppCoordinator: MVMRecipesCoordinatorDelegate {
+    func didRequestRecipesCoordinatorDismiss(forRecipesCoordinator coordinator: MVMRecipesCoordinator) {
+        dismiss(coordinator: coordinator)
+    }
+    
+    
+}
 

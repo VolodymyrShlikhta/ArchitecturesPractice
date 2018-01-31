@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum Architecture: String {
     case MVC
     case MVP
@@ -19,11 +18,12 @@ enum Architecture: String {
 extension Architecture {
     static var allArchitectures: [Architecture] {
         var architectures: [Architecture]  = []
+        
         switch Architecture.MVC {
-        case .MVC: architectures.append(.MVC); fallthrough
-        case .MVP: architectures.append(.MVP); fallthrough
-        case .MVVM: architectures.append(.MVVM); fallthrough
-        case .VIPER: architectures.append(.VIPER)
+            case .MVC: architectures.append(.MVC); fallthrough
+            case .MVP: architectures.append(.MVP); fallthrough
+            case .MVVM: architectures.append(.MVVM); fallthrough
+            case .VIPER: architectures.append(.VIPER)
         }
         return architectures
     }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeTableCell" id="SEL-4U-ZmJ" customClass="RecipeTableViewCell" customModule="ArchitecturesPractice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SEL-4U-ZmJ" id="Uwb-iY-05d">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kg7-fr-XYF">
+                        <rect key="frame" x="24" y="11" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26r-N6-kGn">
+                        <rect key="frame" x="319" y="1" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Rwk-vm-fbl"/>
+                            <constraint firstAttribute="width" constant="40" id="ltf-zh-FVq"/>
+                        </constraints>
+                        <state key="normal" image="isFavorite"/>
+                        <connections>
+                            <action selector="didTapFavoriteButton:" destination="SEL-4U-ZmJ" eventType="touchUpInside" id="eMP-sF-fxR"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="26r-N6-kGn" secondAttribute="trailing" constant="16" id="Nrw-PG-X8V"/>
+                    <constraint firstItem="Kg7-fr-XYF" firstAttribute="leading" secondItem="Uwb-iY-05d" secondAttribute="leadingMargin" constant="8" id="buU-ZM-UzK"/>
+                    <constraint firstItem="Kg7-fr-XYF" firstAttribute="centerY" secondItem="Uwb-iY-05d" secondAttribute="centerY" id="c2A-Fz-xMd"/>
+                    <constraint firstItem="26r-N6-kGn" firstAttribute="centerY" secondItem="Uwb-iY-05d" secondAttribute="centerY" id="rbl-wW-6UD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="recipeNameLabel" destination="Kg7-fr-XYF" id="5DH-Hu-eeb"/>
+                <outlet property="starredButton" destination="26r-N6-kGn" id="PIN-wB-rtf"/>
+            </connections>
+            <point key="canvasLocation" x="-38" y="42"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="isFavorite" width="44" height="42"/>
+    </resources>
+</document>

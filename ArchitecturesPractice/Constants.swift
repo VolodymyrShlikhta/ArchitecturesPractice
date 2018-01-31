@@ -11,4 +11,6 @@ import Foundation
 struct Constants {
     static let tableViewCellName = "MyCell"
     static let tableCellNibName = "CustomTableViewCell"
+    static let recipeTableCellReuseId = "RecipeTableCell"
+    static let recipeTableViewCellName = "RecipeTableViewCell"
 }
