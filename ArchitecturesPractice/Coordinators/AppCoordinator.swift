@@ -68,7 +68,7 @@ extension AppCoordinator: SelectedRowDelegate {
             coordinator.delegate = self
             present(coordinator)
         case .VIPER:
-            let coordinator = MVCRecipesCoordiantor()
+            let coordinator = VPRRecipeListCoordinator()
             present(coordinator)
         }
         

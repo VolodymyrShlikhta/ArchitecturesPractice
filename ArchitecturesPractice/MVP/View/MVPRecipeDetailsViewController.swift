@@ -19,7 +19,7 @@ class MVPRecipeDetailsViewController: UIViewController {
     
     var mainView: RecipeDetailsView!
     var presenter: RecipeDetailsPresenter!
-    fileprivate var recipe: PresentableRecipe!
+    fileprivate var recipe: MVPPresentableRecipe!
     var delegate: MVPRecipeDetailsControllerDelegate?
 
     // MARK: View lifecycle
@@ -33,7 +33,7 @@ class MVPRecipeDetailsViewController: UIViewController {
 
 extension MVPRecipeDetailsViewController: MVPDetailsViewInterface {
 
-    func show(recipe: PresentableRecipe) {
+    func show(recipe: MVPPresentableRecipe) {
         let recipeView = UINib(nibName: "RecipeDetails", bundle: nil).instantiate(withOwner: self, options: nil).first as! RecipeDetailsView
         recipeView.frame = self.view.frame
         recipeView.setupWith(title: recipe.title,

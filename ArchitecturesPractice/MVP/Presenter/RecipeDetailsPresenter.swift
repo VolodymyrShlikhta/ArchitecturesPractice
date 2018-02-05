@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct PresentableRecipe {
+struct MVPPresentableRecipe {
     var image: UIImage
     var title: String
     var description: String
@@ -17,7 +17,7 @@ struct PresentableRecipe {
 }
 
 protocol MVPDetailsViewInterface: class {
-    func show(recipe: PresentableRecipe)
+    func show(recipe: MVPPresentableRecipe)
 }
 
 class RecipeDetailsPresenter {
@@ -25,7 +25,7 @@ class RecipeDetailsPresenter {
     // MARK: Vars
     
     var model: Recipe
-    fileprivate var recipe: PresentableRecipe!
+    fileprivate var recipe: MVPPresentableRecipe!
     unowned let view: MVPDetailsViewInterface
     
     // MARK: Initializers
@@ -38,7 +38,7 @@ class RecipeDetailsPresenter {
     // MARK: Methods
     
     func loadData() {
-        recipe = PresentableRecipe(image: model.image,
+        recipe = MVPPresentableRecipe(image: model.image,
                                                   title: model.title,
                                                   description: model.description,
                                                   isStarred: model.isStarred)

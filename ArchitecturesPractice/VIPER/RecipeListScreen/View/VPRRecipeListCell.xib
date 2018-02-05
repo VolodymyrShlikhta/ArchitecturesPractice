@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VPRRecipeListCell" rowHeight="72" id="rzq-DY-kkw" customClass="VPRRecipeListCell" customModule="ArchitecturesPractice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="542" height="129"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rzq-DY-kkw" id="9bC-Mo-qwU">
+                <rect key="frame" x="0.0" y="0.0" width="542" height="128.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HIN-DX-qLF">
+                        <rect key="frame" x="16" y="16" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="6af-82-Ixv"/>
+                            <constraint firstAttribute="height" constant="40" id="H3M-Rh-UWy"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tb-5j-lJA">
+                        <rect key="frame" x="64" y="26" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="isFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="Lhy-91-80K">
+                        <rect key="frame" x="486" y="16" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="QoE-fL-8I0"/>
+                            <constraint firstAttribute="width" constant="40" id="Xq3-hF-4I2"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Lhy-91-80K" firstAttribute="top" secondItem="HIN-DX-qLF" secondAttribute="top" id="4Ft-ph-8Md"/>
+                    <constraint firstItem="0Tb-5j-lJA" firstAttribute="centerY" secondItem="HIN-DX-qLF" secondAttribute="centerY" id="QFn-0b-Y65"/>
+                    <constraint firstItem="Lhy-91-80K" firstAttribute="bottom" secondItem="HIN-DX-qLF" secondAttribute="bottom" id="XvG-rY-4sY"/>
+                    <constraint firstItem="HIN-DX-qLF" firstAttribute="top" secondItem="9bC-Mo-qwU" secondAttribute="top" constant="16" id="akS-lr-sv4"/>
+                    <constraint firstItem="Lhy-91-80K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0Tb-5j-lJA" secondAttribute="trailing" constant="8" id="d3p-PF-CZ4"/>
+                    <constraint firstItem="0Tb-5j-lJA" firstAttribute="leading" secondItem="HIN-DX-qLF" secondAttribute="trailing" constant="8" id="nce-DX-YQt"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HIN-DX-qLF" secondAttribute="bottom" constant="16" id="ok2-aN-ovF"/>
+                    <constraint firstItem="HIN-DX-qLF" firstAttribute="leading" secondItem="9bC-Mo-qwU" secondAttribute="leading" constant="16" id="uPy-p8-BY8"/>
+                    <constraint firstAttribute="trailing" secondItem="Lhy-91-80K" secondAttribute="trailing" constant="16" id="w1h-PX-KvA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="isStarredImageView" destination="Lhy-91-80K" id="NC1-fB-Prb"/>
+                <outlet property="recipeImageView" destination="HIN-DX-qLF" id="MQA-Qe-NmN"/>
+                <outlet property="recipeTitleLabel" destination="0Tb-5j-lJA" id="7Q4-ue-c5v"/>
+            </connections>
+            <point key="canvasLocation" x="-42" y="62.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="isFavorite" width="16" height="16"/>
+    </resources>
+</document>
